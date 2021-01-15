@@ -19,6 +19,7 @@ module.exports = {
 ],
   module: {
     rules: [
+      ...base.module.rules,
       {
         // .css结尾
         test: /\.css$/i,
