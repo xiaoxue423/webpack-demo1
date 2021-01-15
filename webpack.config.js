@@ -1,34 +1,23 @@
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const base = require('./webpack.config.base.js')
 
 module.exports = {
-  // mode是用来切换模式的
+  //把base的所有属性抄到这里来
+  ...base,
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
   },
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    // filename: 'index.js'
-    filename: '[name].[contenthash].js',
-  },
-  plugins: [new HtmlWebpackPlugin({
-    title: 'XDML - 写代码啦',
-    // filename: 'assets/admin.html'
-    template: 'src/assets/index.html'
-  })],
   module: {
     rules: [
       {
-        // .css结尾
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader"],   
       },
     ],
   },
 };
+
 
 
 
